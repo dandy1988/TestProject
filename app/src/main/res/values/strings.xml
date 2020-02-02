@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TestProject</string>
+    <string name="nameBtmAdd">Enter your add name</string>
+</resources>
