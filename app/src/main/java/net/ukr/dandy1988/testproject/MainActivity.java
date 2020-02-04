@@ -2,6 +2,7 @@ package net.ukr.dandy1988.testproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -30,7 +31,18 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText etName = findViewById(R.id.etName);
         final Button btnAdd = findViewById(R.id.btnAdd);
+        final Button btnActivity2 = findViewById(R.id.btnActivity2);
         btnAdd.setEnabled(false);
+
+        btnActivity2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Activity2.class);
+                intent.putExtra("number", etName.getText().toString());
+                Log.d(TAG, "MainActivity -> Intent(), etName.getText(): "+ etName.getText());
+                startActivity(intent);
+            }
+        });
 
         etName.addTextChangedListener(new TextWatcher() {
             @Override
@@ -53,13 +65,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void buttonPressed(View view){
+    public void btnAddPressed(View view){
         // выводим сообщение
         Toast toast = Toast.makeText(getApplicationContext(), "Name have added", Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
+
     };
 
+//    public void btnActivity2pressed(View view){
+//        Intent intent = new Intent(this, Activity2.class);
+//        startActivity(intent);
+//    }
 
     @Override
     protected void onRestart() {

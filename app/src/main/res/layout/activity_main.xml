@@ -37,9 +37,15 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="+"
-            android:onClick="buttonPressed"
+            android:onClick="btnAddPressed"
             android:textSize="32sp" />
     </LinearLayout>
-    >
+    <Button
+        android:id="@+id/btnActivity2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Go to Activity 2"
+        android:textSize="32sp"
+    />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

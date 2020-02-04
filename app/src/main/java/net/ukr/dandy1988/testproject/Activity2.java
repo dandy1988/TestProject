@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.ViewDebug;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,6 +23,18 @@ public class Activity2 extends AppCompatActivity {
             Log.d(TAG, "Activity2 -> onCreate(), savedInstanceState: ");
         } else {
             Log.d(TAG, "Activity2 -> onCreate(), savedInstanceState: " + savedInstanceState.toString());
+        }
+
+        String number = getIntent().getStringExtra("number");
+
+        TextView textView1 = findViewById(R.id.textView);
+        TextView textView2 = findViewById(R.id.textView2);
+
+        try {
+            textView2.setText(number);
+            textView1.setText("number"+"    "+number);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -41,6 +55,7 @@ public class Activity2 extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.d(TAG, "Activity2 -> onResume() ");
+
     }
 
     @Override
