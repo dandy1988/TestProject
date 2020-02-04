@@ -71,7 +71,14 @@ public class MainActivity extends AppCompatActivity {
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
 
-    };
+    }
+
+    public void btnAddPressedActivity2(View view){
+
+        Toast toast = Toast.makeText(getApplicationContext(), "#2 Activity", Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
+    }
 
 //    public void btnActivity2pressed(View view){
 //        Intent intent = new Intent(this, Activity2.class);
