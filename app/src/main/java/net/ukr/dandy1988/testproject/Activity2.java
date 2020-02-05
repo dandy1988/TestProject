@@ -1,5 +1,6 @@
 package net.ukr.dandy1988.testproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -36,6 +37,11 @@ public class Activity2 extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+        Intent intent = new Intent();
+        intent.putExtra("request", "call from Activity2");
+        setResult(777, intent);
     }
 
 

@@ -1,5 +1,6 @@
 package net.ukr.dandy1988.testproject;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         final EditText etName = findViewById(R.id.etName);
         final Button btnAdd = findViewById(R.id.btnAdd);
         final Button btnActivity2 = findViewById(R.id.btnActivity2);
+
         btnAdd.setEnabled(false);
 
         btnActivity2.setOnClickListener(new View.OnClickListener() {
@@ -73,17 +76,24 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void btnAddPressedActivity2(View view){
-
-        Toast toast = Toast.makeText(getApplicationContext(), "#2 Activity", Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.show();
+    public void btnActivity2ResultPressed(View view) {
+        Intent intent = new Intent(this, Activity2.class);
+        startActivityForResult(intent, 777);
     }
 
-//    public void btnActivity2pressed(View view){
-//        Intent intent = new Intent(this, Activity2.class);
-//        startActivity(intent);
-//    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 777) {
+            String dataString = "";
+            if (data != null) {
+                dataString = data.toString();
+            }
+            final TextView tvActivity2Result = findViewById(R.id.tvActivity2Result);
+            dataString = data.getStringExtra("request");
+            tvActivity2Result.setText(dataString);
+        }
+    }
 
     @Override
     protected void onRestart() {
@@ -122,6 +132,6 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "MainActivity -> onDestroy() ");
     }
 
-    public void butonPressed(View view) {
-    }
+
+
 }
